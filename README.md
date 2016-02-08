@@ -3,7 +3,7 @@ chrome-ww-my-recipes
 
 A simple extension for Chrome, made because my wife keeps complaining about the lack of ability to search your own recipes on the new Weight Watchers site.
 
-The icon is usable from the toolbar whenever you're browsing pages on the `cms.weightwatchers.co.uk` domain. You need to be logged in to Weight Watchers to be able to use the plugin.
+The icon is usable from the toolbar whenever you're browsing pages on the `cmx.weightwatchers.co.uk` domain. You need to be logged in to Weight Watchers to be able to use the plugin.
 
 ![](https://i.imgur.com/ERcwcmV.png)
 
