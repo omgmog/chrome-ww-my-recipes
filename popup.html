@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <style>
+  body {
+    width: 500px;
+    font-family: sans-serif;
+    padding-top: 50px;
+  }
+
+  .list {
+    margin: 0;
+    padding: 5px 0 0;
+  }
+
+  .list > li {
+    display: block;
+    background-color: #eee;
+    padding: 10px;
+    box-shadow: inset 0 1px 0 #fff;
+  }
+
+  .avatar {
+    max-width: 150px;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  h3 {
+    font-size: 16px;
+    margin: 0 0 0.3rem;
+    font-weight: normal;
+    font-weight: bold;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  input {
+    border: solid 1px #ccc;
+    border-radius: 2px;
+    padding: 7px 14px;
+    box-sizing: border-box;
+    position: fixed;
+    max-width: 96%;
+    width: 100%;
+    top: 10px;
+    left: 2%;
+    right: 2%;
+    font-size: 15px;
+  }
+
+  input:focus {
+    outline: none;
+    border-color: #aaa;
+  }
+
+  </style>
+</head>
+
+<body>
+  <div id="output"></div>
+  <script src="handlebars-v4.0.5.js"></script>
+  <script src="list.js"></script>
+  <script src="list.fuzzysearch.min.js"></script>
+  <script src="popup.js"></script>
+</body>
+
+</html>
