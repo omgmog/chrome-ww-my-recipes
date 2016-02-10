@@ -5,7 +5,7 @@
   var totalHits = 0;
   var allData = {};
 
-  var getJSON = function(url, successHandler, errorHandler) {
+  var getJSON = function(url, successHandler, errorHandler, notAuthedHandler) {
     var xhr = typeof XMLHttpRequest != 'undefined' ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
     xhr.open('get', url, true);
     xhr.responseType = 'json';
@@ -16,6 +16,8 @@
         status = xhr.status;
         if (status == 200) {
           successHandler && successHandler(xhr.response);
+        } else if ( status == 401 ) {
+          notAuthedHandler && notAuthedHandler()
         } else {
           errorHandler && errorHandler(status);
         }
@@ -63,15 +65,21 @@
 
     if (receivedCount < totalHits) {
       receivedCount = Object.keys(allData).length;
-      getJSON(url + receivedCount, successHandler, errorHandler);
+      getJSON(url + receivedCount, successHandler, errorHandler, notAuthedHandler);
     } else {
       renderList(allData);
       initSearch();
     }
   };
+
   var errorHandler = function(status) {
     console.log(status);
   };
-  getJSON(url + receivedCount, successHandler, errorHandler);
+
+  var notAuthedHandler = function () {
+    document.querySelectorAll('#output')[0].innerHTML = '<h4 style="color:#d00">Error, please log in to your account first!</h4>';
+  };
+
+  getJSON(url + receivedCount, successHandler, errorHandler, notAuthedHandler);
 
 }());
