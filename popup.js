@@ -1,9 +1,10 @@
 (function() {
   'use strict';
-  var url = "https://cmx.weightwatchers.co.uk/api/v2/cmx/operations/composed/members/~/lists/memberrecipes?isActive=true&limit=100&offset=";
+  var url = "https://cmx.weightwatchers.co.uk/api/v2/cmx/operations/composed/members/~/lists/memberrecipes?isActive=true&limit=50&offset=";
   var receivedCount = 0;
   var totalHits = 0;
   var allData = {};
+  var output = document.querySelectorAll('#output')[0];
 
   var getJSON = function(url, successHandler, errorHandler, notAuthedHandler) {
     var xhr = typeof XMLHttpRequest != 'undefined' ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
@@ -44,7 +45,7 @@
 
     var template = Handlebars.compile(recipeTpl);
     var html = template(hits);
-    document.querySelectorAll('#output')[0].innerHTML = html;
+    output.innerHTML = html;
     console.log(document.querySelectorAll('.list li').length);
   };
   var initSearch = function() {
@@ -56,12 +57,19 @@
     document.querySelectorAll('input')[0].focus();
   };
 
+  var updateProgressBar = function (count, total) {
+    var progressAmount = parseInt((100/total)*count);
+    output.innerHTML = '<div class="progress"><div class="inner" style="width:' + progressAmount + '%"></div><div class="count">'+progressAmount+'%</div></div>';
+  };
+
   var successHandler = function(data) {
     allData = jsonConcat(allData, data.hits);
 
     if (data.totalHits) {
       totalHits = data.totalHits;
     }
+
+    updateProgressBar(receivedCount, totalHits);
 
     if (receivedCount < totalHits) {
       receivedCount = Object.keys(allData).length;
@@ -77,7 +85,7 @@
   };
 
   var notAuthedHandler = function () {
-    document.querySelectorAll('#output')[0].innerHTML = '<h4 style="color:#d00">Error, please log in to your account first!</h4>';
+    output.innerHTML = '<h4 style="color:#d00">Error, please log in to your account first!</h4>';
   };
 
   getJSON(url + receivedCount, successHandler, errorHandler, notAuthedHandler);
