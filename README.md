@@ -5,7 +5,7 @@ A simple extension for Chrome, made because my wife keeps complaining about the 
 
 The icon is usable from the toolbar whenever you're browsing pages on the `cmx.weightwatchers.co.uk` domain. You need to be logged in to Weight Watchers to be able to use the plugin.
 
-![](https://i.imgur.com/ERcwcmV.png)
+![](http://i.imgur.com/ImrJkeH.png)
 
 ### To install
 
