@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "WW NUI My Recipes",
     "description": "This extension provides a menu to easily browse all of your recipes",
-    "version": "1.12",
+    "version": "1.13",
     "background": {
         "scripts": ["background.js"]
     },
