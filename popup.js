@@ -41,7 +41,11 @@
   var renderList = function(data) {
     var hits = data;
     console.log(hits[0].name);
-    var recipeTpl = '<input class="fuzzy-search" placeholder="Search"/><ul class="list">{{#each .}}<li><h3 class="name">{{name}} (<a href="http://cmx.weightwatchers.co.uk/#/nui/explore/member-food/details/v3:{{_id}}:{{sourceType}}:{{versionId}}" target="_blank">View</a>) ({{smartPoints}} SP)</h3></li>{{/each}}</ul>';
+    var recipeTpl = '<input class="fuzzy-search" placeholder="Search"/>\
+    <ul class="list">\
+    {{#each .}}<li>\
+    <h3 class="name">{{name}} (<a href="http://cmx.weightwatchers.co.uk/nui/explore/details/v3:{{_id}}:{{sourceType}}:{{versionId}}" target="_blank">View</a>) ({{smartPoints}} SP)</h3>\
+    </li>{{/each}}</ul>';
 
     var template = Handlebars.compile(recipeTpl);
     var html = template(hits);
